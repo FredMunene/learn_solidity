@@ -18,4 +18,20 @@ contract ChristMasWishlist{
 
     // Map
     mapping (address => string[]) public userWishlists;
+
+    // Allow users to add items
+    function addItem(string memory item) public {
+        userWishlists[msg.sender].push(item);
+    }
+
+    // Allow user to see their wishlidt
+    function getWishlist() public view returns (string[] memory){
+        return userWishlists[msg.sender];
+    }
+
+    // Adding a boolean variable to toggle visibility
+    function toggleVisibility(bool status) public {
+        isPublic = status;
+    }
+
 }
